@@ -89,14 +89,14 @@ window.addEventListener("message", (e) => {
         console.log(skins)
         if (skins.error) {
 
-            const row = document.createElement('div');
-            row.classList.add('table-content__info-row');
-            row.innerHTML = `<h4>${formatDate()} - ${skins.error}</h4><p>Status: ${skins?.status}</p>`;
-            logsTable.appendChild(row);
-            if (skins.status === 409) {
-                startButton.classList.toggle('active');
-                clearTimeout(timeout);
-            }
+            // const row = document.createElement('div');
+            // row.classList.add('table-content__info-row');
+            // row.innerHTML = `<h4>${formatDate()} - ${skins.error}</h4><p>Status: ${skins?.status}</p>`;
+            // logsTable.appendChild(row);
+            // if (skins.status === 409) {
+            //     startButton.classList.toggle('active');
+            //     clearTimeout(timeout);
+            // }
             return;
         }
         const toBot = [];
@@ -120,7 +120,7 @@ window.addEventListener("message", (e) => {
                     <h4>Stickers:</h3>
             `;
             for (const sticker of skin.stickers) {
-				if (sticker.wear === 0) message += `<h5> - ${sticker.name}: $${sticker.price}</h5>`
+				if (!sticker.wear) message += `<h5> - ${sticker.name}: $${sticker.price}</h5>`
 				else message += `<h5> - ${sticker.name}: (Wear: ${sticker.wear.toFixed(2)})</h5>`
 			}
             message += `</div>`
